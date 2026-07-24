@@ -11,7 +11,7 @@ export const siteData = {
   contact: {
     email: "",
     whatsapp: "",
-    github: "https://github.com/adminbarberflow",
+    github: "https://github.com/Souzas-Dev",
     linkedin: "",
     location: "Brasil"
   },
@@ -256,10 +256,10 @@ export const siteData = {
       ],
 
       frontendUrl:
-        "https://github.com/adminbarberflow/souzasdevfront",
+        "https://github.com/Souzas-Dev/souzasdevfront",
 
       backendUrl:
-        "https://github.com/adminbarberflow/souzasdevback"
+        "https://github.com/Souzas-Dev/souzasdevback"
     },
     {
       slug: "cafeteria-conceito",
@@ -325,10 +325,10 @@ export const siteData = {
         "O resultado é uma demonstração leve, responsiva e profissional, preparada para representar uma solução real que poderia ser adaptada para cafeterias, restaurantes e outros negócios do setor alimentício.",
 
       demoUrl:
-        "https://adminbarberflow.github.io/cafeteria-frontend/",
+        "https://souzas-dev.github.io/cafeteria-frontend/",
 
       codeUrl:
-        "https://github.com/adminbarberflow/cafeteria-frontend",
+        "https://github.com/Souzas-Dev/cafeteria-frontend",
 
       caseUrl:
         "/cases/cafeteria-conceito"
