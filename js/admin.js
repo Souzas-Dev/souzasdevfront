@@ -2,7 +2,7 @@ const API_URL =
   ["localhost", "127.0.0.1"].includes(
     window.location.hostname
   )
-    ? "http://localhost:3000"
+    ? `http://${window.location.hostname}:3000`
     : "https://api.souzasdev.com";
 
 const logoutButton =
@@ -51,6 +51,52 @@ const statusLabels = {
   new: "Nova",
   read: "Lida",
   archived: "Arquivada"
+};
+
+const projectTypeLabels = {
+  site_institutional:
+    "Site institucional",
+
+  landing_page:
+    "Landing page",
+
+  portfolio_profissional:
+    "Portfólio profissional",
+
+  sistema_web:
+    "Sistema web",
+
+  api_integracao:
+    "API ou integração",
+
+  manutencao_melhoria:
+    "Manutenção ou melhoria",
+
+  nao_sei:
+    "Ainda não tenho certeza",
+
+  outro:
+    "Outro"
+};
+
+const deadlineLabels = {
+  sem_prazo:
+    "Sem prazo definido",
+
+  assim_que_possivel:
+    "Assim que possível",
+
+  ate_30_dias:
+    "Dentro de 30 dias",
+
+  entre_1_3_meses:
+    "Entre 1 e 3 meses",
+
+  mais_3_meses:
+    "Mais de 3 meses",
+
+  conversar_primeiro:
+    "Quero conversar primeiro"
 };
 
 function getCsrfTokenFromCookie() {
@@ -199,6 +245,103 @@ function formatDate(dateValue) {
   ).format(date);
 }
 
+function getReadableLabel(
+  labels,
+  value
+) {
+  return (
+    labels[value] ||
+    "Não informado"
+  );
+}
+
+function formatWhatsApp(value) {
+  const digits = String(value ?? "")
+    .replace(/\D/g, "");
+
+  const nationalNumber =
+    digits.startsWith("55") &&
+    [12, 13].includes(digits.length)
+      ? digits.slice(2)
+      : digits;
+
+  if (nationalNumber.length === 11) {
+    return (
+      `(${nationalNumber.slice(0, 2)}) ` +
+      `${nationalNumber.slice(2, 7)}-` +
+      nationalNumber.slice(7)
+    );
+  }
+
+  if (nationalNumber.length === 10) {
+    return (
+      `(${nationalNumber.slice(0, 2)}) ` +
+      `${nationalNumber.slice(2, 6)}-` +
+      nationalNumber.slice(6)
+    );
+  }
+
+  return (
+    nationalNumber ||
+    "Não informado"
+  );
+}
+
+function getWhatsAppUrl(value) {
+  const digits = String(value ?? "")
+    .replace(/\D/g, "");
+
+  if (!digits) {
+    return "";
+  }
+
+  const internationalNumber =
+    digits.startsWith("55")
+      ? digits
+      : `55${digits}`;
+
+  return (
+    `https://wa.me/${internationalNumber}`
+  );
+}
+
+function createDetailItem(
+  label,
+  value
+) {
+  const item =
+    document.createElement("div");
+
+  item.className =
+    "message-card__detail";
+
+  const term =
+    createTextElement(
+      "dt",
+      "message-card__detail-label",
+      label
+    );
+
+  const description =
+    document.createElement("dd");
+
+  description.className =
+    "message-card__detail-value";
+
+  if (typeof value === "string") {
+    description.textContent = value;
+  } else {
+    description.append(value);
+  }
+
+  item.append(
+    term,
+    description
+  );
+
+  return item;
+}
+
 async function changeStatus(
   contactId,
   status
@@ -345,6 +488,73 @@ function createMessageCard(contact) {
 
   header.append(identity, select);
 
+  const details =
+    document.createElement("dl");
+
+  details.className =
+    "message-card__details";
+
+  const whatsappUrl =
+    getWhatsAppUrl(
+      contact.whatsapp
+    );
+
+  let whatsappValue =
+    "Não informado";
+
+  if (whatsappUrl) {
+    const whatsappLink =
+      createTextElement(
+        "a",
+        "message-card__detail-link",
+        formatWhatsApp(
+          contact.whatsapp
+        )
+      );
+
+    whatsappLink.href =
+      whatsappUrl;
+
+    whatsappLink.target =
+      "_blank";
+
+    whatsappLink.rel =
+      "noopener noreferrer";
+
+    whatsappLink.setAttribute(
+      "aria-label",
+      `Abrir conversa no WhatsApp com ${formatWhatsApp(
+        contact.whatsapp
+      )}`
+    );
+
+    whatsappValue =
+      whatsappLink;
+  }
+
+  details.append(
+    createDetailItem(
+      "WhatsApp",
+      whatsappValue
+    ),
+
+    createDetailItem(
+      "Tipo de projeto",
+      getReadableLabel(
+        projectTypeLabels,
+        contact.projectType
+      )
+    ),
+
+    createDetailItem(
+      "Prazo esperado",
+      getReadableLabel(
+        deadlineLabels,
+        contact.deadline
+      )
+    )
+  );
+
   const message =
     createTextElement(
       "p",
@@ -378,6 +588,7 @@ function createMessageCard(contact) {
 
   article.append(
     header,
+    details,
     message,
     actions
   );
@@ -406,6 +617,18 @@ function getVisibleContacts() {
     return [
       contact.name,
       contact.email,
+      contact.whatsapp,
+      formatWhatsApp(
+        contact.whatsapp
+      ),
+      contact.projectType,
+      projectTypeLabels[
+        contact.projectType
+      ],
+      contact.deadline,
+      deadlineLabels[
+        contact.deadline
+      ],
       contact.message
     ].some((value) =>
       normalizeSearchText(value).includes(
