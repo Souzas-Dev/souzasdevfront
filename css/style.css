@@ -1262,6 +1262,12 @@ img {
   transition: transform var(--transition);
 }
 
+.whatsapp-button__icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
 .whatsapp-button:hover {
   transform:
     translateY(-4px)
