@@ -11,6 +11,11 @@ const navigation = $("#navigation");
 const navigationLinks = $$(".navigation a[href^='#']");
 const header = $("#header");
 const scrollProgress = $("#scroll-progress");
+const heroSection = $("#inicio");
+const whatsappButton = $("#whatsapp-button");
+
+const whatsappMobileQuery =
+  window.matchMedia("(max-width: 620px)");
 
 const contactForm = $("#contact-form");
 const contactSubmit = $("#contact-submit");
@@ -799,22 +804,61 @@ function renderSocials() {
 }
 
 function configureWhatsApp() {
-  const button =
-    $("#whatsapp-button");
-
   const whatsappUrl =
     getWhatsAppUrl();
 
   if (!whatsappUrl) {
-    button.hidden = true;
+    whatsappButton.hidden = true;
     return;
   }
 
-  button.href = whatsappUrl;
-  button.title =
+  whatsappButton.href = whatsappUrl;
+  whatsappButton.title =
     "Conversar com a Souzas Dev pelo WhatsApp";
 
-  button.hidden = false;
+  whatsappButton.hidden = false;
+  updateWhatsAppVisibility();
+}
+
+function updateWhatsAppVisibility() {
+  if (
+    !heroSection ||
+    !whatsappButton ||
+    whatsappButton.hidden
+  ) {
+    return;
+  }
+
+  const heroIsVisible =
+    heroSection
+      .getBoundingClientRect()
+      .bottom > 0;
+
+  const shouldHide =
+    whatsappMobileQuery.matches &&
+    heroIsVisible;
+
+  whatsappButton.classList.toggle(
+    "whatsapp-button--mobile-hidden",
+    shouldHide
+  );
+
+  whatsappButton.setAttribute(
+    "aria-hidden",
+    String(shouldHide)
+  );
+
+  if (shouldHide) {
+    whatsappButton.setAttribute(
+      "tabindex",
+      "-1"
+    );
+  }
+  else {
+    whatsappButton.removeAttribute(
+      "tabindex"
+    );
+  }
 }
 
 function toggleMenu() {
@@ -1367,6 +1411,22 @@ function initialize() {
   renderContactLinks();
   renderSocials();
   configureWhatsApp();
+
+  window.addEventListener(
+    "scroll",
+    updateWhatsAppVisibility,
+    {
+      passive: true
+    }
+  );
+
+  window.addEventListener(
+    "resize",
+    updateWhatsAppVisibility,
+    {
+      passive: true
+    }
+  );
 
   menuButton.addEventListener(
     "click",

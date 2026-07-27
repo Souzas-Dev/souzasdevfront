@@ -3183,3 +3183,38 @@ img {
 }
 
 /* END: grade escalável de projetos */
+
+/* WhatsApp flutuante no mobile */
+.whatsapp-button {
+  transition:
+    opacity var(--transition),
+    transform var(--transition),
+    visibility var(--transition);
+}
+
+.whatsapp-button--mobile-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform:
+    translateY(12px)
+    scale(0.9);
+}
+
+@media (max-width: 620px) {
+  .whatsapp-button {
+    right: 14px;
+    bottom:
+      calc(
+        14px +
+        env(safe-area-inset-bottom, 0px)
+      );
+    width: 46px;
+    height: 46px;
+  }
+
+  .whatsapp-button__icon {
+    width: 25px;
+    height: 25px;
+  }
+}
