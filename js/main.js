@@ -18,6 +18,43 @@ const formFeedback = $("#form-feedback");
 const serviceStatus = $("#service-status");
 const serviceMessage = $("#service-message");
 
+const nameInput = $("#name");
+const emailInput = $("#email");
+const whatsappInput = $("#whatsapp");
+const projectTypeInput = $("#project-type");
+const deadlineInput = $("#deadline");
+const messageInput = $("#message");
+const messageCounter = $("#message-counter");
+
+const fieldErrors = {
+  name: $("#name-error"),
+  email: $("#email-error"),
+  whatsapp: $("#whatsapp-error"),
+  projectType: $("#project-type-error"),
+  deadline: $("#deadline-error"),
+  message: $("#message-error")
+};
+
+const validProjectTypes = new Set([
+  "site_institutional",
+  "landing_page",
+  "portfolio_profissional",
+  "sistema_web",
+  "api_integracao",
+  "manutencao_melhoria",
+  "nao_sei",
+  "outro"
+]);
+
+const validDeadlines = new Set([
+  "sem_prazo",
+  "assim_que_possivel",
+  "ate_30_dias",
+  "entre_1_3_meses",
+  "mais_3_meses",
+  "conversar_primeiro"
+]);
+
 function setText(selector, value) {
   const element = $(selector);
 
@@ -660,6 +697,28 @@ function createContactLink(
   return link;
 }
 
+function getWhatsAppUrl() {
+  const rawNumber =
+    (siteData.contact.whatsapp || "")
+      .replace(/\D/g, "");
+
+  if (!rawNumber) {
+    return "";
+  }
+
+  const number =
+    rawNumber.startsWith("55")
+      ? rawNumber
+      : `55${rawNumber}`;
+
+  const message =
+    encodeURIComponent(
+      "Olá! Conheci a Souzas Dev pelo site e gostaria de conversar sobre um projeto."
+    );
+
+  return `https://wa.me/${number}?text=${message}`;
+}
+
 function renderContactLinks() {
   const container =
     $("#contact-links");
@@ -672,25 +731,31 @@ function renderContactLinks() {
     ),
 
     createContactLink(
-      "Localização",
-      siteData.contact.location,
-      "#contato"
+      "WhatsApp",
+      siteData.contact.whatsapp,
+      getWhatsAppUrl()
     ),
 
     createContactLink(
-      "GitHub",
-      "Ver perfil",
-      siteData.contact.github
-    ),
-
-    createContactLink(
-      "LinkedIn",
-      "Conectar",
-      siteData.contact.linkedin
+      "Instagram",
+      siteData.contact.instagramHandle,
+      siteData.contact.instagram
     )
   ].filter(Boolean);
 
-  container.replaceChildren(...links);
+  const location =
+    siteData.contact.location
+      ? createElement(
+          "p",
+          "contact-location",
+          `Atendimento em ${siteData.contact.location} e também de forma remota.`
+        )
+      : null;
+
+  container.replaceChildren(
+    ...links,
+    ...(location ? [location] : [])
+  );
 }
 
 function renderSocials() {
@@ -699,12 +764,12 @@ function renderSocials() {
 
   const socials = [
     {
-      label: "GitHub",
-      url: siteData.contact.github
+      label: "WhatsApp",
+      url: getWhatsAppUrl()
     },
     {
-      label: "LinkedIn",
-      url: siteData.contact.linkedin
+      label: "Instagram",
+      url: siteData.contact.instagram
     },
     {
       label: "E-mail",
@@ -737,24 +802,17 @@ function configureWhatsApp() {
   const button =
     $("#whatsapp-button");
 
-  if (!siteData.contact.whatsapp) {
+  const whatsappUrl =
+    getWhatsAppUrl();
+
+  if (!whatsappUrl) {
     button.hidden = true;
     return;
   }
 
-  const number =
-    siteData.contact.whatsapp.replace(
-      /\D/g,
-      ""
-    );
-
-  const message =
-    encodeURIComponent(
-      "Olá! Conheci a Souzas Dev pelo site e gostaria de conversar sobre um projeto."
-    );
-
-  button.href =
-    `https://wa.me/${number}?text=${message}`;
+  button.href = whatsappUrl;
+  button.title =
+    "Conversar com a Souzas Dev pelo WhatsApp";
 
   button.hidden = false;
 }
@@ -977,7 +1035,7 @@ function setFormLoading(isLoading) {
 
   contactSubmit.innerHTML = isLoading
     ? "Enviando..."
-    : 'Enviar mensagem <span aria-hidden="true">↗</span>';
+    : 'Enviar para análise <span aria-hidden="true">↗</span>';
 }
 
 async function apiRequest(
@@ -1027,10 +1085,98 @@ async function checkApiStatus() {
   }
 }
 
+function setFieldError(
+  input,
+  message = ""
+) {
+  const hasError =
+    Boolean(message);
+
+  input.classList.toggle(
+    "is-invalid",
+    hasError
+  );
+
+  input.setAttribute(
+    "aria-invalid",
+    String(hasError)
+  );
+
+  const errorElement =
+    fieldErrors[input.name];
+
+  if (errorElement) {
+    errorElement.textContent = message;
+  }
+}
+
+function clearFieldError(input) {
+  setFieldError(input);
+}
+
+function updateMessageCounter() {
+  const currentLength =
+    messageInput.value.length;
+
+  messageCounter.textContent =
+    `${currentLength}/2000`;
+
+  messageCounter.classList.toggle(
+    "near-limit",
+    currentLength >= 1800
+  );
+}
+
+function formatWhatsAppInput(value) {
+  const digits =
+    value.replace(/\D/g, "").slice(0, 11);
+
+  if (!digits) {
+    return "";
+  }
+
+  if (digits.length <= 2) {
+    return `(${digits}`;
+  }
+
+  const areaCode =
+    digits.slice(0, 2);
+
+  const localNumber =
+    digits.slice(2);
+
+  const firstPartLength =
+    localNumber.length > 8
+      ? 5
+      : 4;
+
+  const firstPart =
+    localNumber.slice(0, firstPartLength);
+
+  const secondPart =
+    localNumber.slice(firstPartLength);
+
+  return (
+    `(${areaCode}) ${firstPart}` +
+    (secondPart ? `-${secondPart}` : "")
+  );
+}
+
 async function handleContactSubmit(event) {
   event.preventDefault();
 
   showFormFeedback("");
+
+  const inputs = [
+    nameInput,
+    emailInput,
+    whatsappInput,
+    projectTypeInput,
+    deadlineInput,
+    messageInput
+  ];
+
+  inputs.forEach(clearFieldError);
 
   const formData =
     new FormData(contactForm);
@@ -1038,22 +1184,107 @@ async function handleContactSubmit(event) {
   const contact = {
     name:
       formData.get("name")?.trim() || "",
+
     email:
       formData.get("email")?.trim() || "",
+
+    whatsapp:
+      formData.get("whatsapp")?.trim() || "",
+
+    projectType:
+      formData.get("projectType")?.trim() || "",
+
+    deadline:
+      formData.get("deadline")?.trim() || "",
+
     message:
       formData.get("message")?.trim() || ""
   };
 
+  const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const whatsappDigits =
+    contact.whatsapp.replace(/\D/g, "");
+
   if (
     contact.name.length < 2 ||
-    !contact.email ||
-    contact.message.length < 10
+    contact.name.length > 80
   ) {
+    setFieldError(
+      nameInput,
+      "Informe um nome com pelo menos 2 caracteres."
+    );
+  }
+
+  if (
+    contact.email.length > 254 ||
+    !emailPattern.test(contact.email)
+  ) {
+    setFieldError(
+      emailInput,
+      "Informe um e-mail válido para contato."
+    );
+  }
+
+  if (
+    contact.whatsapp &&
+    ![10, 11].includes(
+      whatsappDigits.length
+    )
+  ) {
+    setFieldError(
+      whatsappInput,
+      "Informe um WhatsApp válido com DDD."
+    );
+  }
+
+  if (
+    !validProjectTypes.has(
+      contact.projectType
+    )
+  ) {
+    setFieldError(
+      projectTypeInput,
+      "Selecione o tipo de projeto."
+    );
+  }
+
+  if (
+    contact.deadline &&
+    !validDeadlines.has(contact.deadline)
+  ) {
+    setFieldError(
+      deadlineInput,
+      "Selecione um prazo válido."
+    );
+  }
+
+  if (
+    contact.message.length < 10 ||
+    contact.message.length > 2000
+  ) {
+    setFieldError(
+      messageInput,
+      "Descreva sua necessidade com pelo menos 10 caracteres."
+    );
+  }
+
+  const firstInvalidInput =
+    inputs.find(
+      (input) =>
+        input.getAttribute(
+          "aria-invalid"
+        ) === "true"
+    );
+
+  if (firstInvalidInput) {
     showFormFeedback(
-      "Preencha corretamente todos os campos.",
+      "Revise os campos destacados antes de enviar.",
       "error"
     );
 
+    firstInvalidInput.focus();
     return;
   }
 
@@ -1075,12 +1306,40 @@ async function handleContactSubmit(event) {
     );
 
     showFormFeedback(
-      data.message,
+      data.message ||
+        "Mensagem enviada com sucesso.",
       "success"
     );
 
     contactForm.reset();
+    updateMessageCounter();
+    inputs.forEach(clearFieldError);
   } catch (error) {
+    const inputByName = {
+      name: nameInput,
+      email: emailInput,
+      whatsapp: whatsappInput,
+      projectType: projectTypeInput,
+      deadline: deadlineInput,
+      message: messageInput
+    };
+
+    if (error.data?.errors) {
+      Object.entries(
+        error.data.errors
+      ).forEach(([field, message]) => {
+        const input =
+          inputByName[field];
+
+        if (input) {
+          setFieldError(
+            input,
+            message
+          );
+        }
+      });
+    }
+
     const validationMessages =
       error.data?.errors
         ? Object.values(
@@ -1090,7 +1349,7 @@ async function handleContactSubmit(event) {
 
     showFormFeedback(
       validationMessages ||
-        "Não foi possível enviar a mensagem.",
+        "Não foi possível enviar a mensagem. Tente novamente mais tarde.",
       "error"
     );
   } finally {
@@ -1143,6 +1402,40 @@ function initialize() {
     "submit",
     handleContactSubmit
   );
+
+  [
+    nameInput,
+    emailInput,
+    whatsappInput,
+    projectTypeInput,
+    deadlineInput,
+    messageInput
+  ].forEach((input) => {
+    const eventName =
+      input.tagName === "SELECT"
+        ? "change"
+        : "input";
+
+    input.addEventListener(
+      eventName,
+      () => {
+        if (input === whatsappInput) {
+          input.value =
+            formatWhatsAppInput(
+              input.value
+            );
+        }
+
+        clearFieldError(input);
+
+        if (input === messageInput) {
+          updateMessageCounter();
+        }
+      }
+    );
+  });
+
+  updateMessageCounter();
 
   window.addEventListener(
     "scroll",

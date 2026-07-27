@@ -9,11 +9,11 @@ export const siteData = {
     : "https://api.souzasdev.com",
 
   contact: {
-    email: "",
-    whatsapp: "",
-    github: "https://github.com/Souzas-Dev",
-    linkedin: "",
-    location: "Brasil"
+    email: "contato@souzasdev.com",
+    whatsapp: "(67) 98119-3789",
+    instagram: "https://www.instagram.com/souzasdev/",
+    instagramHandle: "@souzasdev",
+    location: "Campo Grande, MS"
   },
 
   hero: {

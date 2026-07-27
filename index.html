@@ -573,12 +573,28 @@
                 placeholder="Como podemos chamar você?"
                 minlength="2"
                 maxlength="80"
+                autocomplete="name"
+                aria-describedby="name-hint name-error"
                 required
               >
+
+              <p
+                class="form-hint"
+                id="name-hint"
+              >
+                Informe como prefere ser chamado.
+              </p>
+
+              <p
+                class="form-error"
+                id="name-error"
+              ></p>
             </div>
 
             <div class="form-group">
-              <label for="email">E-mail</label>
+              <label for="email">
+                E-mail para contato
+              </label>
 
               <input
                 id="email"
@@ -586,25 +602,213 @@
                 type="email"
                 placeholder="voce@exemplo.com"
                 maxlength="254"
+                autocomplete="email"
+                inputmode="email"
+                aria-describedby="email-hint email-error"
                 required
               >
+
+              <p
+                class="form-hint"
+                id="email-hint"
+              >
+                A resposta será enviada para este endereço.
+              </p>
+
+              <p
+                class="form-error"
+                id="email-error"
+              ></p>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="message">
-              Conte sobre a ideia ou necessidade
+          <div class="form-row">
+            <div class="form-group">
+              <label for="whatsapp">
+                WhatsApp — opcional
+              </label>
+
+              <input
+                id="whatsapp"
+                name="whatsapp"
+                type="tel"
+                placeholder="(67) 99999-9999"
+                maxlength="15"
+                autocomplete="tel"
+                inputmode="tel"
+                aria-describedby="whatsapp-hint whatsapp-error"
+              >
+
+              <p
+                class="form-hint"
+                id="whatsapp-hint"
+              >
+                Informe somente caso prefira receber o retorno pelo WhatsApp.
+              </p>
+
+              <p
+                class="form-error"
+                id="whatsapp-error"
+              ></p>
+            </div>
+
+            <div class="form-group">
+              <label for="project-type">
+                Tipo de projeto
+              </label>
+
+              <select
+                id="project-type"
+                name="projectType"
+                aria-describedby="project-type-hint project-type-error"
+                required
+              >
+                <option
+                  value=""
+                  selected
+                  disabled
+                >
+                  Selecione uma opção
+                </option>
+
+                <option value="site_institutional">
+                  Site institucional
+                </option>
+
+                <option value="landing_page">
+                  Landing page
+                </option>
+
+                <option value="portfolio_profissional">
+                  Portfólio profissional
+                </option>
+
+                <option value="sistema_web">
+                  Sistema web
+                </option>
+
+                <option value="api_integracao">
+                  API ou integração
+                </option>
+
+                <option value="manutencao_melhoria">
+                  Manutenção ou melhoria
+                </option>
+
+                <option value="nao_sei">
+                  Ainda não tenho certeza
+                </option>
+
+                <option value="outro">
+                  Outro
+                </option>
+              </select>
+
+              <p
+                class="form-hint"
+                id="project-type-hint"
+              >
+                Escolha a opção mais próxima da sua necessidade.
+              </p>
+
+              <p
+                class="form-error"
+                id="project-type-error"
+              ></p>
+            </div>
+          </div>
+
+          <div class="form-group form-group--half">
+            <label for="deadline">
+              Prazo esperado
             </label>
+
+            <select
+              id="deadline"
+              name="deadline"
+              aria-describedby="deadline-hint deadline-error"
+            >
+              <option
+                value=""
+                selected
+              >
+                Selecione uma opção
+              </option>
+
+              <option value="sem_prazo">
+                Sem prazo definido
+              </option>
+
+              <option value="assim_que_possivel">
+                Assim que possível
+              </option>
+
+              <option value="ate_30_dias">
+                Dentro de 30 dias
+              </option>
+
+              <option value="entre_1_3_meses">
+                Entre 1 e 3 meses
+              </option>
+
+              <option value="mais_3_meses">
+                Mais de 3 meses
+              </option>
+
+              <option value="conversar_primeiro">
+                Quero conversar primeiro
+              </option>
+            </select>
+
+            <p
+              class="form-hint"
+              id="deadline-hint"
+            >
+              Pode deixar em branco caso ainda não exista um prazo.
+            </p>
+
+            <p
+              class="form-error"
+              id="deadline-error"
+            ></p>
+          </div>
+
+          <div class="form-group">
+            <div class="form-group__label-row">
+              <label for="message">
+                Conte sobre sua ideia ou necessidade
+              </label>
+
+              <span
+                class="message-counter"
+                id="message-counter"
+              >
+                0/2000
+              </span>
+            </div>
 
             <textarea
               id="message"
               name="message"
-              rows="7"
-              placeholder="Descreva o objetivo, as funcionalidades desejadas e qualquer informação importante."
+              rows="6"
+              placeholder="Conte o objetivo do projeto, o que precisa funcionar e qualquer informação que considere importante."
               minlength="10"
               maxlength="2000"
+              aria-describedby="message-hint message-error"
               required
             ></textarea>
+
+            <p
+              class="form-hint"
+              id="message-hint"
+            >
+              Não é necessário ter todos os detalhes definidos.
+            </p>
+
+            <p
+              class="form-error"
+              id="message-error"
+            ></p>
           </div>
 
           <button
