@@ -151,12 +151,48 @@ function renderServices() {
           "service-card reveal"
         );
 
-      article.append(
+      const content =
         createElement(
-          "span",
-          "service-card__number",
-          service.number
+          "div",
+          "service-card__content"
+        );
+
+      const deliverables =
+        createElement(
+          "ul",
+          "service-card__deliverables"
+        );
+
+      service.deliverables.forEach(
+        (deliverable) => {
+          deliverables.append(
+            createElement(
+              "li",
+              "",
+              deliverable
+            )
+          );
+        }
+      );
+
+      const fit =
+        createElement(
+          "p",
+          "service-card__fit"
+        );
+
+      fit.append(
+        createElement(
+          "strong",
+          "",
+          "Indicado para: "
         ),
+        document.createTextNode(
+          service.fit
+        )
+      );
+
+      content.append(
         createElement(
           "h3",
           "",
@@ -164,14 +200,25 @@ function renderServices() {
         ),
         createElement(
           "p",
-          "",
-          service.description
+          "service-card__problem",
+          service.problem
         ),
         createElement(
+          "p",
+          "service-card__label",
+          "O que pode incluir"
+        ),
+        deliverables,
+        fit
+      );
+
+      article.append(
+        createElement(
           "span",
-          "service-card__arrow",
-          "↗"
-        )
+          "service-card__number",
+          service.number
+        ),
+        content
       );
 
       fragment.append(article);

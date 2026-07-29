@@ -45,26 +45,58 @@ export const siteData = {
     {
       number: "01",
       title: "Sites institucionais",
-      description:
-        "Sites responsivos para apresentar negócios, serviços, informações importantes e formas de contato."
+      problem:
+        "Para negócios que precisam reunir informações, serviços e contatos em um endereço profissional.",
+      deliverables: [
+        "Página inicial e seções institucionais",
+        "Apresentação clara dos serviços",
+        "Chamadas para contato ou orçamento",
+        "Layout responsivo"
+      ],
+      fit:
+        "Profissionais autônomos, prestadores de serviço e pequenos negócios."
     },
     {
       number: "02",
       title: "Landing pages",
-      description:
-        "Páginas direcionadas à divulgação de serviços, campanhas, produtos e captação de contatos."
+      problem:
+        "Para divulgar uma oferta, campanha ou serviço específico em uma página direta e focada.",
+      deliverables: [
+        "Estrutura orientada a uma oferta",
+        "Chamadas para ação",
+        "Integração com formulário ou WhatsApp",
+        "Experiência responsiva"
+      ],
+      fit:
+        "Campanhas, lançamentos, eventos e divulgação de serviços específicos."
     },
     {
       number: "03",
-      title: "Portfólios digitais",
-      description:
-        "Portfólios personalizados para apresentar projetos, habilidades, experiências e identidade profissional."
+      title: "Catálogos e cardápios digitais",
+      problem:
+        "Para organizar produtos, serviços ou itens de um cardápio de forma acessível pelo celular.",
+      deliverables: [
+        "Categorias e organização dos itens",
+        "Descrições, preços e imagens",
+        "Filtros ou navegação simplificada",
+        "Contato ou pedido por WhatsApp"
+      ],
+      fit:
+        "Lojas, cafeterias, restaurantes e negócios com catálogo de produtos."
     },
     {
       number: "04",
-      title: "Pequenas soluções web",
-      description:
-        "Formulários integrados, APIs, áreas administrativas e funcionalidades compatíveis com o escopo definido."
+      title: "Pequenos sistemas e integrações",
+      problem:
+        "Para substituir tarefas manuais ou conectar formulários e informações em uma solução web organizada.",
+      deliverables: [
+        "Formulários integrados",
+        "Painéis administrativos simples",
+        "APIs e integrações compatíveis com o escopo",
+        "Persistência e organização de dados"
+      ],
+      fit:
+        "Projetos com necessidades específicas que possam ser atendidas por um escopo pequeno ou gradual."
     }
   ],
   technologies: [
