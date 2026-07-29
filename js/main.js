@@ -742,6 +742,25 @@ function renderContactLinks() {
   const container =
     $("#contact-links");
 
+  const identity =
+    createElement(
+      "div",
+      "contact-identity"
+    );
+
+  identity.append(
+    createElement(
+      "strong",
+      "",
+      siteData.contact.owner
+    ),
+    createElement(
+      "span",
+      "",
+      siteData.contact.role
+    )
+  );
+
   const links = [
     createContactLink(
       "E-mail",
@@ -772,6 +791,7 @@ function renderContactLinks() {
       : null;
 
   container.replaceChildren(
+    identity,
     ...links,
     ...(location ? [location] : [])
   );

@@ -9,11 +9,14 @@ export const siteData = {
     : "https://api.souzasdev.com",
 
   contact: {
+    owner: "Eduardo Souza",
+    role: "Fundador e Desenvolvedor Web",
     email: "contato@souzasdev.com",
     whatsapp: "(67) 98119-3789",
     instagram: "https://www.instagram.com/souzasdev/",
     instagramHandle: "@souzasdev",
-    location: "Campo Grande, MS"
+    github: "https://github.com/Souzas-Dev",
+    location: "Campo Grande – MS"
   },
 
   about: {
