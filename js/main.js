@@ -89,42 +89,9 @@ function createElement(
 
 function populateMainContent() {
   setText(
-    "#hero-eyebrow",
-    siteData.hero.eyebrow
-  );
-
-  setText(
-    "#hero-title-start",
-    siteData.hero.titleStart
-  );
-
-  setText(
-    "#hero-title-highlight",
-    siteData.hero.titleHighlight
-  );
-
-  setText(
-    "#hero-description",
-    siteData.hero.description
-  );
-
-  setText(
-    "#about-eyebrow",
-    siteData.about.eyebrow
-  );
-
-  setText(
-    "#about-title",
-    siteData.about.title
-  );
-
-  setText(
     "#current-year",
     new Date().getFullYear()
   );
-
-  document.title =
-    `${siteData.brand} | Desenvolvimento Web`;
 }
 
 function renderAbout() {

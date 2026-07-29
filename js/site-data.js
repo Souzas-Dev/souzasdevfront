@@ -16,38 +16,29 @@ export const siteData = {
     location: "Campo Grande, MS"
   },
 
-  hero: {
-    eyebrow: "Desenvolvimento web em constante evolução",
-    titleStart: "Construindo soluções digitais e",
-    titleHighlight: "evoluindo a cada projeto.",
-    description:
-      "Sou um desenvolvedor em formação contínua. Crio sites e sistemas web com dedicação, transparência e responsabilidade, aplicando meus estudos em projetos reais e ampliando minhas habilidades a cada novo desafio."
-  },
   about: {
-    eyebrow: "Sobre a Souzas Dev",
-    title: "Aprendizado transformado em projetos reais.",
     paragraphs: [
-      "A Souzas Dev nasceu como um espaço para transformar estudos, ideias e desafios em experiências práticas de desenvolvimento web.",
-      "Estou construindo minha experiência por meio de projetos reais, estudando frontend, backend, APIs, bancos de dados e boas práticas de desenvolvimento.",
-      "Não pretendo transmitir que sei tudo. Meu compromisso é entender cada necessidade, pesquisar quando necessário, trabalhar dentro do que consigo entregar e evoluir continuamente com cada projeto."
+      "A Souzas Dev desenvolve soluções web para profissionais e pequenos negócios que precisam apresentar seus serviços, organizar informações e fortalecer sua presença digital.",
+      "Cada projeto é avaliado individualmente. Antes de iniciar, definimos com clareza as funcionalidades, o prazo, as responsabilidades e os limites do escopo.",
+      "A solução é planejada de acordo com a necessidade real do projeto, evitando complexidade desnecessária e promessas incompatíveis com o escopo."
     ]
   },
   stats: [
     {
-      value: "Projetos reais",
-      label: "Conhecimento aplicado em soluções funcionais"
+      value: "Escopo claro",
+      label: "Funcionalidades e limites definidos antes do desenvolvimento"
     },
     {
-      value: "Evolução contínua",
-      label: "Estudo e prática em cada novo desafio"
+      value: "Atendimento direto",
+      label: "Comunicação próxima durante as etapas do projeto"
     },
     {
-      value: "Transparência",
-      label: "Escopo, limitações e progresso comunicados com clareza"
+      value: "Responsividade",
+      label: "Experiência planejada para celular, tablet e desktop"
     },
     {
-      value: "Dedicação",
-      label: "Cuidado com cada etapa do desenvolvimento"
+      value: "Evolução responsável",
+      label: "Estrutura organizada para melhorias futuras"
     }
   ],
   services: [
@@ -335,10 +326,3 @@ export const siteData = {
     }
   ]
 };
-
-
-
-
-
-
-
