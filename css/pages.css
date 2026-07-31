@@ -783,6 +783,12 @@
   margin-top: 28px;
 }
 
+.services-page #opcoes
+.service-card__link {
+  align-self: flex-start;
+  margin-top: 24px;
+}
+
 /* Quinto serviço */
 
 .services-page #opcoes
@@ -842,6 +848,14 @@
   grid-row: 3;
   margin-top: 20px;
   padding-top: 24px;
+}
+
+.services-page #opcoes
+.service-card:last-child
+.service-card__link {
+  grid-column: 1;
+  grid-row: 4;
+  justify-self: start;
 }
 
 .services-page #opcoes
