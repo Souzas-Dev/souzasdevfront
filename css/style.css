@@ -879,6 +879,18 @@ img {
   color: var(--text-soft);
 }
 
+.service-card__link {
+  align-self: flex-start;
+  margin-top: 22px;
+}
+
+.services-grid
+.service-card:last-child {
+  width: calc(50% - 9px);
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
 .technologies__content {
   display: grid;
   grid-template-columns:
@@ -1594,6 +1606,11 @@ img {
 
   .services-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-grid
+  .service-card:last-child {
+    width: 100%;
   }
 
 .footer__content {

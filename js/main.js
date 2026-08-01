@@ -192,6 +192,21 @@ function renderServices() {
         )
       );
 
+      const link =
+        createElement(
+          "a",
+          "button button--secondary service-card__link",
+          "Ver detalhes"
+        );
+
+      link.href =
+        service.route;
+
+      link.setAttribute(
+        "aria-label",
+        `Ver detalhes sobre ${service.title}`
+      );
+
       content.append(
         createElement(
           "h3",
@@ -209,7 +224,8 @@ function renderServices() {
           "O que pode incluir"
         ),
         deliverables,
-        fit
+        fit,
+        link
       );
 
       article.append(

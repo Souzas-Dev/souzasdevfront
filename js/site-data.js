@@ -48,6 +48,7 @@ export const siteData = {
     {
       number: "01",
       title: "Sites institucionais",
+      route: "/servicos/sites-institucionais",
       problem:
         "Para negócios que precisam reunir informações, serviços e contatos em um endereço profissional.",
       deliverables: [
@@ -62,6 +63,7 @@ export const siteData = {
     {
       number: "02",
       title: "Landing pages",
+      route: "/servicos/landing-pages",
       problem:
         "Para divulgar uma oferta, campanha ou serviço específico em uma página direta e focada.",
       deliverables: [
@@ -75,7 +77,23 @@ export const siteData = {
     },
     {
       number: "03",
+      title: "Portfólios digitais",
+      route: "/servicos/portfolios",
+      problem:
+        "Para profissionais que precisam apresentar projetos, competências e formas de contato em um espaço próprio.",
+      deliverables: [
+        "Apresentação profissional",
+        "Projetos e estudos de caso",
+        "Competências e serviços",
+        "Canais de contato"
+      ],
+      fit:
+        "Desenvolvedores, designers, freelancers e profissionais que desejam organizar sua presença digital."
+    },
+    {
+      number: "04",
       title: "Catálogos e cardápios digitais",
+      route: "/servicos/catalogos-cardapios",
       problem:
         "Para organizar produtos, serviços ou itens de um cardápio de forma acessível pelo celular.",
       deliverables: [
@@ -88,10 +106,11 @@ export const siteData = {
         "Lojas, cafeterias, restaurantes e negócios com catálogo de produtos."
     },
     {
-      number: "04",
-      title: "Pequenos sistemas e integrações",
+      number: "05",
+      title: "Pequenas soluções e integrações web",
+      route: "/servicos/solucoes-integracoes",
       problem:
-        "Para substituir tarefas manuais ou conectar formulários e informações em uma solução web organizada.",
+        "Para organizar formulários, informações ou tarefas simples em uma solução compatível com um escopo pequeno ou gradual.",
       deliverables: [
         "Formulários integrados",
         "Painéis administrativos simples",
@@ -99,7 +118,7 @@ export const siteData = {
         "Persistência e organização de dados"
       ],
       fit:
-        "Projetos com necessidades específicas que possam ser atendidas por um escopo pequeno ou gradual."
+        "Projetos com necessidades específicas que possam ser atendidas de maneira gradual e organizada."
     }
   ],
   technologies: [
