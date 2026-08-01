@@ -537,6 +537,25 @@
   line-height: 1.7;
 }
 
+.service-summary__link {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  margin-top: 2px;
+  color: var(--primary-light);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color:
+    rgba(139, 92, 246, 0.48);
+  text-underline-offset: 4px;
+}
+
+.service-summary__link:hover {
+  color: var(--text);
+  text-decoration-color: currentColor;
+}
+
 .service-summary__note {
   padding: 23px 25px;
   border: 1px solid var(--border);
