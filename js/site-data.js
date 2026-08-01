@@ -304,7 +304,10 @@ export const siteData = {
         "https://github.com/Souzas-Dev/souzasdevfront",
 
       backendUrl:
-        "https://github.com/Souzas-Dev/souzasdevback"
+        "https://github.com/Souzas-Dev/souzasdevback",
+
+      caseUrl:
+        "/cases/souzas-dev"
     },
     {
       slug: "cafeteria-conceito",

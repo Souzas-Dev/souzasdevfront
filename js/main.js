@@ -643,14 +643,8 @@ function renderProjects() {
         );
       }
 
-      const fallbackCaseUrl =
-        project.title === "Souzas Dev"
-          ? "/cases/souzas-dev"
-          : "";
-
       const caseUrl =
-        project.caseUrl ??
-        fallbackCaseUrl;
+        project.caseUrl ?? "";
 
       if (caseUrl) {
         actions.append(
