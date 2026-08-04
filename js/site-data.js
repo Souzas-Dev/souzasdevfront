@@ -378,7 +378,7 @@ export const siteData = {
         "https://github.com/Souzas-Dev/estacao-cafe-prosa",
 
       caseUrl:
-        "/cases/cafeteria-conceito"
+        "/cases/estacao-cafe-prosa"
     }
   ]
 };
