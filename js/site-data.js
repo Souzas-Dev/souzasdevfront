@@ -142,6 +142,24 @@ export const siteData = {
           icon: "devicon-javascript-plain colored",
           description:
             "Adiciona interatividade e comportamento às páginas."
+        },
+        {
+          name: "TypeScript",
+          icon: "devicon-typescript-plain colored",
+          description:
+            "Adiciona tipagem ao JavaScript e melhora a manutenção."
+        },
+        {
+          name: "React",
+          icon: "devicon-react-original colored",
+          description:
+            "Organiza interfaces em componentes reutilizáveis."
+        },
+        {
+          name: "Next.js",
+          image: "https://cdn.simpleicons.org/nextdotjs/FFFFFF?viewbox=auto",
+          description:
+            "Estrutura aplicações React e permite exportação estática."
         }
       ]
     },
@@ -205,6 +223,18 @@ export const siteData = {
           image: "https://cdn.simpleicons.org/cloudflare/F38020?viewbox=auto",
           description:
             "Gerencia DNS, SSL, proxy e camadas de segurança."
+        },
+        {
+          name: "GitHub Pages",
+          icon: "devicon-github-original",
+          description:
+            "Publica demonstrações estáticas diretamente pelo GitHub."
+        },
+        {
+          name: "GitHub Actions",
+          image: "https://cdn.simpleicons.org/githubactions/2088FF?viewbox=auto",
+          description:
+            "Automatiza processos de build e publicação."
         }
       ]
     },
@@ -227,13 +257,19 @@ export const siteData = {
           name: "npm",
           icon: "devicon-npm-original-wordmark colored",
           description:
-            "Gerencia dependências e scripts dos projetos Node.js."
+            "Gerencia dependências, scripts e workspaces dos projetos."
         },
         {
           name: "VS Code",
           icon: "devicon-vscode-plain colored",
           description:
             "Editor utilizado para escrever e organizar o código."
+        },
+        {
+          name: "ESLint",
+          icon: "devicon-eslint-original colored",
+          description:
+            "Analisa o código e ajuda a manter padrões de qualidade."
         }
       ]
     }
