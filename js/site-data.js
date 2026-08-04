@@ -311,72 +311,71 @@ export const siteData = {
     },
     {
       slug: "cafeteria-conceito",
-      category: "Website institucional / Cardápio digital",
-      title: "Cafeteria Conceito",
-      subtitle: "Experiência digital para uma cafeteria fictícia",
-      status: "Projeto concluído",
+      category: "Website institucional / Catálogo digital",
+      title: "Estação Café & Prosa",
+      subtitle: "Identidade editorial para uma cafeteria fictícia",
+      status: "Evolução publicada em 2026",
       year: "2026",
 
       coverImage:
-        "/assets/images/projects/cafeteria-conceito.webp",
+        "/assets/images/projects/estacao-cafe-prosa.webp",
 
       coverAlt:
-        "Página inicial do projeto Cafeteria Conceito",
+        "Página inicial da demo Estação Café & Prosa",
 
       overview:
-        "Site conceitual de uma cafeteria, desenvolvido com foco em uma experiência minimalista, responsiva e agradável para apresentação de produtos e cardápio digital.",
+        "Site institucional e catálogo digital para uma cafeteria fictícia, com identidade editorial, animações suaves, experiência responsiva e narrativa visual sobre o ritual do café.",
 
       complementaryDescription:
-        "Uma experiência digital clean e elegante para uma cafeteria fictícia, com cardápio interativo, filtros por categoria, informações institucionais e localização ilustrativa.",
+        "A Estação Café & Prosa representa a evolução da primeira demo Cafeteria Conceito, preservada no case como registro da origem do projeto.",
 
       challenge:
-        "Criar uma página que transmitisse a sensação de uma cafeteria moderna e acolhedora sem utilizar excesso de elementos, cores ou animações. O cardápio precisava ser fácil de consultar e funcionar bem em diferentes tamanhos de tela.",
+        "Evoluir a primeira demonstração para uma presença digital com personalidade própria, equilibrando narrativa visual, conteúdo institucional e um catálogo fácil de consultar.",
 
       solution:
-        "Foi desenvolvida uma interface minimalista, com tipografia editorial, paleta inspirada em tons de café e bastante espaço visual. O cardápio é renderizado dinamicamente com JavaScript e pode ser filtrado por categorias.",
+        "A aplicação foi reconstruída com Next.js, React e TypeScript, utilizando componentes reutilizáveis, imagens amplas, animações suaves e catálogo com busca e filtros.",
 
       features: [
-        "Cardápio digital",
-        "Filtros de produtos",
+        "Catálogo digital",
+        "Busca de produtos",
+        "Filtros por categoria",
         "Layout responsivo",
-        "Menu mobile",
-        "Informações institucionais",
-        "Mapa ilustrativo",
-        "Navegação por âncoras",
-        "Tratamento de falhas no carregamento das imagens",
-        "Boas práticas básicas de acessibilidade"
+        "Menu adaptado para dispositivos móveis",
+        "Narrativa sobre o ritual do café",
+        "Animações suaves",
+        "Boas práticas de acessibilidade"
       ],
 
       technologies: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
+        "Next.js",
+        "React",
+        "TypeScript",
+        "CSS",
         "Git",
         "GitHub",
+        "GitHub Actions",
         "GitHub Pages"
       ],
 
       highlights: [
-        "Desenvolvimento mobile-first",
-        "Layout totalmente responsivo",
-        "Identidade visual minimalista",
-        "Cardápio digital dinâmico",
-        "Filtros por categoria",
-        "Produtos renderizados com JavaScript",
-        "Imagens otimizadas e armazenadas localmente",
-        "Navegação acessível",
-        "Localização fictícia e mapa ilustrativo",
-        "Publicação automatizada pelo GitHub Pages"
+        "Evolução da demo Cafeteria Conceito",
+        "Identidade visual editorial",
+        "Catálogo digital filtrável",
+        "Componentes reutilizáveis em React",
+        "Código tipado com TypeScript",
+        "Experiência responsiva",
+        "Exportação estática",
+        "Publicação automatizada"
       ],
 
       result:
-        "O resultado é uma demonstração leve, responsiva e profissional, preparada para representar uma solução real que poderia ser adaptada para cafeterias, restaurantes e outros negócios do setor alimentício.",
+        "O resultado é uma demonstração conceitual com identidade própria, catálogo navegável e narrativa visual, criada exclusivamente para o portfólio da Souzas Dev.",
 
       demoUrl:
-        "https://souzas-dev.github.io/cafeteria-frontend/",
+        "https://souzas-dev.github.io/estacao-cafe-prosa/",
 
       codeUrl:
-        "https://github.com/Souzas-Dev/cafeteria-frontend",
+        "https://github.com/Souzas-Dev/estacao-cafe-prosa",
 
       caseUrl:
         "/cases/cafeteria-conceito"

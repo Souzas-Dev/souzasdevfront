@@ -833,4 +833,140 @@
   }
 }
 
+/* BEGIN: transição visual Cafeteria Conceito / Estação Café & Prosa */
+
+.case-evolution-preview {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 8 / 5;
+  background: #11131d;
+}
+
+.case-hero__preview .case-evolution-preview__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-evolution-preview__image--original {
+  z-index: 1;
+  animation:
+    case-evolution-original 12s
+    ease-in-out infinite;
+}
+
+.case-evolution-preview__image--current {
+  z-index: 2;
+  opacity: 0;
+  animation:
+    case-evolution-current 12s
+    ease-in-out infinite;
+}
+
+.case-evolution-preview__label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 4;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(10, 12, 20, 0.78);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.case-evolution-preview__label--original {
+  animation:
+    case-evolution-original 12s
+    ease-in-out infinite;
+}
+
+.case-evolution-preview__label--current {
+  opacity: 0;
+  animation:
+    case-evolution-current 12s
+    ease-in-out infinite;
+}
+
+.case-hero__preview--evolution:hover
+.case-evolution-preview__image,
+.case-hero__preview--evolution:hover
+.case-evolution-preview__label,
+.case-hero__preview--evolution:focus
+.case-evolution-preview__image,
+.case-hero__preview--evolution:focus
+.case-evolution-preview__label {
+  animation-play-state: paused;
+}
+
+@keyframes case-evolution-original {
+  0%,
+  34% {
+    opacity: 1;
+  }
+
+  46%,
+  88% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes case-evolution-current {
+  0%,
+  34% {
+    opacity: 0;
+  }
+
+  46%,
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-evolution-preview__image--original,
+  .case-evolution-preview__label--original {
+    display: none;
+    animation: none;
+  }
+
+  .case-evolution-preview__image--current {
+    position: relative;
+    opacity: 1;
+    animation: none;
+  }
+
+  .case-evolution-preview__label--current {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .case-evolution-preview__label {
+    top: 10px;
+    left: 10px;
+    padding: 6px 9px;
+    font-size: 0.68rem;
+  }
+}
+
+/* END: transição visual Cafeteria Conceito / Estação Café & Prosa */
+
 /* END: case Cafeteria Conceito */
