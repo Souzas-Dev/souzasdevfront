@@ -267,7 +267,7 @@ export const siteData = {
         },
         {
           name: "ESLint",
-          icon: "devicon-eslint-original colored",
+          image: "https://cdn.simpleicons.org/eslint/4B32C3?viewbox=auto",
           description:
             "Analisa o código e ajuda a manter padrões de qualidade."
         }
