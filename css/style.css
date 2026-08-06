@@ -1251,6 +1251,48 @@ img {
     rgba(239, 68, 68, 0.08);
 }
 
+.form-group--turnstile {
+  margin-top: 18px;
+}
+
+.form-group__title {
+  margin-bottom: 8px;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.turnstile-widget {
+  min-height: 65px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+}
+
+.turnstile-widget.is-invalid {
+  border-color: var(--danger);
+  box-shadow:
+    0 0 0 4px
+    rgba(239, 68, 68, 0.08);
+}
+
+.turnstile-widget iframe {
+  max-width: 100%;
+}
+
+.turnstile-noscript {
+  margin-top: 8px;
+  padding: 12px 14px;
+  border: 1px solid
+    rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-sm);
+  background:
+    rgba(245, 158, 11, 0.08);
+  color: #fde68a;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .contact-form__button {
   width: 100%;
   margin-top: 22px;

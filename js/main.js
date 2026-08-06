@@ -22,6 +22,13 @@ const contactSubmit = $("#contact-submit");
 const formFeedback = $("#form-feedback");
 const serviceStatus = $("#service-status");
 const serviceMessage = $("#service-message");
+const turnstileWidget = $("#turnstile-widget");
+const turnstileError = $("#turnstile-error");
+
+let apiState = "loading";
+let turnstileState = "loading";
+let turnstileWidgetId = null;
+let turnstileToken = "";
 
 const nameInput = $("#name");
 const emailInput = $("#email");
@@ -1119,58 +1126,338 @@ function showFormFeedback(
 }
 
 function setFormLoading(isLoading) {
-  contactSubmit.disabled = isLoading;
+  contactForm.setAttribute(
+    "aria-busy",
+    String(isLoading)
+  );
+
+  contactSubmit.disabled =
+    isLoading ||
+    apiState !== "ready" ||
+    turnstileState !== "ready";
 
   contactSubmit.innerHTML = isLoading
     ? "Enviando..."
     : 'Enviar para análise <span aria-hidden="true">↗</span>';
 }
 
-async function apiRequest(
-  path,
-  options = {}
-) {
-  const response = await fetch(
-    `${siteData.apiUrl}${path}`,
-    options
-  );
-
-  const data = await response
-    .json()
-    .catch(() => ({
-      message:
-        "O servidor retornou uma resposta inválida."
-    }));
-
-  if (!response.ok) {
-    const error = new Error(
-      data.message ||
-      "Não foi possível concluir a operação."
-    );
-
-    error.data = data;
-    throw error;
-  }
-
-  return data;
-}
-
-async function checkApiStatus() {
-  try {
-    await apiRequest("/api/status");
-
-    serviceStatus.className =
-      "service-status online";
-
-    serviceMessage.textContent =
-      "Formulário disponível";
-  } catch {
+function updateServiceAvailability() {
+  if (
+    apiState === "error" ||
+    turnstileState === "error"
+  ) {
     serviceStatus.className =
       "service-status offline";
 
     serviceMessage.textContent =
       "Serviço temporariamente indisponível";
+
+    return;
   }
+
+  if (
+    apiState === "ready" &&
+    turnstileState === "ready"
+  ) {
+    serviceStatus.className =
+      "service-status online";
+
+    serviceMessage.textContent =
+      "Formulário disponível";
+
+    return;
+  }
+
+  serviceStatus.className =
+    "service-status";
+
+  serviceMessage.textContent =
+    "Carregando verificação de segurança...";
+}
+
+function setTurnstileError(
+  message = ""
+) {
+  const hasError =
+    Boolean(message);
+
+  turnstileWidget.classList.toggle(
+    "is-invalid",
+    hasError
+  );
+
+  turnstileWidget.setAttribute(
+    "aria-invalid",
+    String(hasError)
+  );
+
+  turnstileError.textContent =
+    message;
+}
+
+function resetTurnstile() {
+  turnstileToken = "";
+
+  if (
+    turnstileWidgetId !== null &&
+    window.turnstile
+  ) {
+    window.turnstile.reset(
+      turnstileWidgetId
+    );
+  }
+}
+
+function loadTurnstileScript() {
+  if (window.turnstile) {
+    return Promise.resolve(
+      window.turnstile
+    );
+  }
+
+  const existingScript =
+    document.querySelector(
+      "script[data-turnstile-script]"
+    );
+
+  if (existingScript) {
+    return new Promise(
+      (resolve, reject) => {
+        existingScript.addEventListener(
+          "load",
+          () => {
+            if (window.turnstile) {
+              resolve(window.turnstile);
+              return;
+            }
+
+            reject(
+              new Error(
+                "TURNSTILE_UNAVAILABLE"
+              )
+            );
+          },
+          {
+            once: true
+          }
+        );
+
+        existingScript.addEventListener(
+          "error",
+          () => {
+            reject(
+              new Error(
+                "TURNSTILE_SCRIPT_ERROR"
+              )
+            );
+          },
+          {
+            once: true
+          }
+        );
+      }
+    );
+  }
+
+  const script =
+    document.createElement("script");
+
+  script.src =
+    "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+
+  script.async = true;
+  script.defer = true;
+  script.dataset.turnstileScript =
+    "true";
+
+  return new Promise(
+    (resolve, reject) => {
+      script.addEventListener(
+        "load",
+        () => {
+          if (window.turnstile) {
+            resolve(window.turnstile);
+            return;
+          }
+
+          reject(
+            new Error(
+              "TURNSTILE_UNAVAILABLE"
+            )
+          );
+        },
+        {
+          once: true
+        }
+      );
+
+      script.addEventListener(
+        "error",
+        () => {
+          reject(
+            new Error(
+              "TURNSTILE_SCRIPT_ERROR"
+            )
+          );
+        },
+        {
+          once: true
+        }
+      );
+
+      document.head.append(script);
+    }
+  );
+}
+
+async function initializeTurnstile() {
+  const siteKey =
+    siteData.turnstileSiteKey
+      ?.trim() || "";
+
+  if (!siteKey) {
+    turnstileState = "error";
+
+    setTurnstileError(
+      "A verificação de segurança ainda não foi configurada."
+    );
+
+    updateServiceAvailability();
+    setFormLoading(false);
+
+    return;
+  }
+
+  try {
+    const turnstile =
+      await loadTurnstileScript();
+
+    turnstileWidgetId =
+      turnstile.render(
+        turnstileWidget,
+        {
+          sitekey: siteKey,
+          action: "contact_form",
+          theme: "dark",
+          size: "flexible",
+
+          callback: (token) => {
+            turnstileToken = token;
+            setTurnstileError();
+          },
+
+          "expired-callback": () => {
+            turnstileToken = "";
+
+            setTurnstileError(
+              "A verificação expirou. Conclua-a novamente."
+            );
+          },
+
+          "error-callback": () => {
+            turnstileToken = "";
+
+            setTurnstileError(
+              "Não foi possível concluir a verificação. Tente novamente."
+            );
+          },
+
+          "timeout-callback": () => {
+            turnstileToken = "";
+
+            setTurnstileError(
+              "A verificação demorou demais. Tente novamente."
+            );
+          }
+        }
+      );
+
+    if (
+      turnstileWidgetId === null ||
+      turnstileWidgetId === undefined
+    ) {
+      throw new Error(
+        "TURNSTILE_RENDER_ERROR"
+      );
+    }
+
+    turnstileState = "ready";
+    setTurnstileError();
+  } catch {
+    turnstileState = "error";
+
+    setTurnstileError(
+      "Não foi possível carregar a verificação de segurança."
+    );
+  }
+
+  updateServiceAvailability();
+  setFormLoading(false);
+}
+
+async function apiRequest(
+  path,
+  options = {}
+) {
+  const controller =
+    new AbortController();
+
+  const timeoutId =
+    window.setTimeout(
+      () => controller.abort(),
+      10000
+    );
+
+  try {
+    const response = await fetch(
+      `${siteData.apiUrl}${path}`,
+      {
+        ...options,
+        signal: controller.signal
+      }
+    );
+
+    const data = await response
+      .json()
+      .catch(() => ({
+        message:
+          "O servidor retornou uma resposta inválida."
+      }));
+
+    if (!response.ok) {
+      const error = new Error(
+        data.message ||
+        "Não foi possível concluir a operação."
+      );
+
+      error.data = data;
+      throw error;
+    }
+
+    return data;
+  } catch (error) {
+    if (error?.name === "AbortError") {
+      throw new Error(
+        "O servidor demorou para responder. Tente novamente."
+      );
+    }
+
+    throw error;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
+async function checkApiStatus() {
+  try {
+    await apiRequest("/api/status");
+    apiState = "ready";
+  } catch {
+    apiState = "error";
+  }
+
+  updateServiceAvailability();
+  setFormLoading(false);
 }
 
 function setFieldError(
@@ -1286,7 +1573,9 @@ async function handleContactSubmit(event) {
       formData.get("deadline")?.trim() || "",
 
     message:
-      formData.get("message")?.trim() || ""
+      formData.get("message")?.trim() || "",
+
+    turnstileToken
   };
 
   const emailPattern =
@@ -1376,6 +1665,20 @@ async function handleContactSubmit(event) {
     return;
   }
 
+  if (!contact.turnstileToken) {
+    setTurnstileError(
+      "Conclua a verificação de segurança antes de enviar."
+    );
+
+    showFormFeedback(
+      "Conclua a verificação de segurança antes de enviar.",
+      "error"
+    );
+
+    turnstileWidget.focus();
+    return;
+  }
+
   setFormLoading(true);
 
   try {
@@ -1416,6 +1719,11 @@ async function handleContactSubmit(event) {
       Object.entries(
         error.data.errors
       ).forEach(([field, message]) => {
+        if (field === "turnstileToken") {
+          setTurnstileError(message);
+          return;
+        }
+
         const input =
           inputByName[field];
 
@@ -1426,6 +1734,23 @@ async function handleContactSubmit(event) {
           );
         }
       });
+    }
+
+    const firstServerInvalidInput =
+      inputs.find(
+        (input) =>
+          input.getAttribute(
+            "aria-invalid"
+          ) === "true"
+      );
+
+    if (firstServerInvalidInput) {
+      firstServerInvalidInput.focus();
+    } else if (
+      error.data?.errors
+        ?.turnstileToken
+    ) {
+      turnstileWidget.focus();
     }
 
     const validationMessages =
@@ -1441,6 +1766,7 @@ async function handleContactSubmit(event) {
       "error"
     );
   } finally {
+    resetTurnstile();
     setFormLoading(false);
   }
 }
@@ -1455,6 +1781,7 @@ function initialize() {
   renderContactLinks();
   renderSocials();
   configureWhatsApp();
+  initializeTurnstile();
 
   window.addEventListener(
     "scroll",

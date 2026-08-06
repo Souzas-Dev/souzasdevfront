@@ -540,6 +540,7 @@
         <form
           class="contact-form reveal"
           id="contact-form"
+          aria-busy="false"
           novalidate
         >
           <div class="contact-form__heading">
@@ -549,7 +550,11 @@
                 id="service-status"
               ></span>
 
-              <p id="service-message">
+              <p
+                id="service-message"
+                role="status"
+                aria-live="polite"
+              >
                 Verificando disponibilidade...
               </p>
             </div>
@@ -806,10 +811,52 @@
             ></p>
           </div>
 
+          <div
+            class="form-group form-group--turnstile"
+            id="turnstile-group"
+          >
+            <p
+              class="form-group__title"
+              id="turnstile-label"
+            >
+              Verificação de segurança
+            </p>
+
+            <div
+              class="turnstile-widget"
+              id="turnstile-widget"
+              role="group"
+              tabindex="-1"
+              aria-labelledby="turnstile-label"
+              aria-describedby="turnstile-hint turnstile-error"
+              aria-invalid="false"
+            ></div>
+
+            <p
+              class="form-hint"
+              id="turnstile-hint"
+            >
+              Esta verificação ajuda a impedir envios automatizados.
+            </p>
+
+            <p
+              class="form-error"
+              id="turnstile-error"
+            ></p>
+
+            <noscript>
+              <p class="turnstile-noscript">
+                Ative o JavaScript para usar o formulário ou entre
+                em contato por e-mail ou WhatsApp.
+              </p>
+            </noscript>
+          </div>
+
           <button
             class="button button--primary contact-form__button"
             id="contact-submit"
             type="submit"
+            disabled
           >
             Enviar para análise
             <span aria-hidden="true">&#8599;</span>
