@@ -8,6 +8,13 @@ export const siteData = {
     ? `http://${window.location.hostname}:3000`
     : "https://api.souzasdev.com",
 
+  turnstileSiteKey:
+    ["localhost", "127.0.0.1"].includes(
+      window.location.hostname
+    )
+      ? "1x00000000000000000000AA"
+      : "0x4AAAAAAEHMM1ZfIImOl42q",
+
   contact: {
     owner: "Eduardo Souza",
     role: "Fundador e Desenvolvedor Web",
