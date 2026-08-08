@@ -422,6 +422,28 @@ export const siteData = {
 
       caseUrl:
         "/cases/estacao-cafe-prosa"
+    },
+    {
+      category: "Demo conceitual · Gestão operacional",
+      title: "Gestão OS",
+      subtitle: "Painel para clientes, orçamentos e serviços",
+      coverImage:
+        "/assets/images/projects/gestao-os.svg",
+      coverAlt:
+        "Dashboard conceitual do Gestão OS",
+      overview:
+        "Aplicação web fictícia criada para demonstrar uma experiência de gestão operacional com dashboard, clientes, orçamentos e ordens de serviço.",
+      codeUrl:
+        "https://github.com/Souzas-Dev/gestao-os-conceito",
+      technologies: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "CSS Modules",
+        "Vercel"
+      ],
+      caseUrl:
+        "/cases/gestao-os"
     }
   ]
 };

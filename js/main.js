@@ -650,6 +650,19 @@ function renderProjects() {
         );
       }
 
+      if (project.codeUrl) {
+        actions.append(
+          createProjectLink({
+            project,
+            label: "Ver no GitHub",
+            href: project.codeUrl,
+            className:
+              "project-preview__case-link",
+            external: true
+          })
+        );
+      }
+
       const caseUrl =
         project.caseUrl ?? "";
 

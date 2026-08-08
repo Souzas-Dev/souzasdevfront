@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Dashboard conceitual do Gestão OS</title>
+  <desc id="desc">Interface escura com navegação lateral e indicadores de clientes, orçamentos e ordens de serviço.</desc>
+  <rect width="1200" height="750" fill="#0b1524"/>
+  <rect x="0" y="0" width="250" height="750" fill="#07111f"/>
+  <rect x="32" y="34" width="42" height="42" rx="12" fill="#123c43" stroke="#59d4c7"/>
+  <text x="46" y="61" fill="#59d4c7" font-family="Arial, sans-serif" font-size="14" font-weight="700">OS</text>
+  <text x="90" y="53" fill="#f7fafc" font-family="Arial, sans-serif" font-size="17" font-weight="700">Gestão OS</text>
+  <text x="90" y="72" fill="#8fa4ba" font-family="Arial, sans-serif" font-size="11">Projeto conceitual</text>
+  <g font-family="Arial, sans-serif" font-size="14" font-weight="700">
+    <rect x="22" y="130" width="206" height="50" rx="12" fill="#123536" stroke="#2d827c"/>
+    <text x="46" y="161" fill="#f7fafc">DB   Dashboard</text>
+    <text x="46" y="221" fill="#b8c7d6">CL   Clientes</text>
+    <text x="46" y="281" fill="#b8c7d6">OR   Orçamentos</text>
+    <text x="46" y="341" fill="#b8c7d6">OS   Ordens de serviço</text>
+  </g>
+  <rect x="250" width="950" height="110" fill="#ffffff"/>
+  <text x="292" y="44" fill="#168f86" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2">GESTÃO OPERACIONAL</text>
+  <text x="292" y="78" fill="#142033" font-family="Arial, sans-serif" font-size="30" font-weight="700">Dashboard</text>
+  <rect x="1015" y="37" width="135" height="38" rx="11" fill="#f1f6f8"/>
+  <circle cx="1040" cy="56" r="14" fill="#dff7f4"/>
+  <text x="1060" y="54" fill="#233146" font-family="Arial, sans-serif" font-size="11" font-weight="700">Usuário demo</text>
+  <text x="1060" y="68" fill="#7b8b9c" font-family="Arial, sans-serif" font-size="9">Administrador</text>
+  <rect x="286" y="144" width="858" height="112" rx="18" fill="#e8faf7" stroke="#9bded6"/>
+  <text x="316" y="177" fill="#168f86" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">AMBIENTE DEMONSTRATIVO</text>
+  <text x="316" y="211" fill="#152236" font-family="Arial, sans-serif" font-size="22" font-weight="700">Dados fictícios para apresentação</text>
+  <rect x="286" y="282" width="202" height="190" rx="16" fill="#ffffff" stroke="#dce5ee"/>
+  <rect x="510" y="282" width="202" height="190" rx="16" fill="#ffffff" stroke="#dce5ee"/>
+  <rect x="734" y="282" width="202" height="190" rx="16" fill="#ffffff" stroke="#dce5ee"/>
+  <rect x="958" y="282" width="186" height="190" rx="16" fill="#ffffff" stroke="#dce5ee"/>
+  <g font-family="Arial, sans-serif">
+    <text x="312" y="322" fill="#087d75" font-size="11" font-weight="700">CL</text><text x="312" y="370" fill="#142033" font-size="39" font-weight="700">24</text><text x="312" y="400" fill="#1d2b3f" font-size="14" font-weight="700">Clientes ativos</text><text x="312" y="425" fill="#6c7e91" font-size="11">+ 3 este mês</text>
+    <text x="536" y="322" fill="#087d75" font-size="11" font-weight="700">OR</text><text x="536" y="370" fill="#142033" font-size="39" font-weight="700">18</text><text x="536" y="400" fill="#1d2b3f" font-size="14" font-weight="700">Orçamentos</text><text x="536" y="425" fill="#6c7e91" font-size="11">8 em negociação</text>
+    <text x="760" y="322" fill="#087d75" font-size="11" font-weight="700">OS</text><text x="760" y="370" fill="#142033" font-size="39" font-weight="700">12</text><text x="760" y="400" fill="#1d2b3f" font-size="14" font-weight="700">Ordens abertas</text><text x="760" y="425" fill="#6c7e91" font-size="11">6 em andamento</text>
+    <text x="984" y="322" fill="#087d75" font-size="11" font-weight="700">$</text><text x="984" y="370" fill="#142033" font-size="31" font-weight="700">R$ 32k</text><text x="984" y="400" fill="#1d2b3f" font-size="14" font-weight="700">Valor em aberto</text><text x="984" y="425" fill="#6c7e91" font-size="11">Dados simulados</text>
+  </g>
+  <rect x="286" y="510" width="858" height="170" rx="16" fill="#ffffff" stroke="#dce5ee"/>
+  <text x="316" y="550" fill="#74869a" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="1">VISÃO GERAL</text>
+  <text x="316" y="585" fill="#18263a" font-family="Arial, sans-serif" font-size="20" font-weight="700">Operação organizada em um só lugar</text>
+  <rect x="316" y="616" width="640" height="10" rx="5" fill="#dff7f4"/><rect x="316" y="616" width="485" height="10" rx="5" fill="#59d4c7"/>
+</svg>
