@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="/assets/icons/favicon.svg"
+  >
+
+  <meta
+    name="description"
+    content="Faça um diagnóstico gratuito da presença digital do seu negócio e descubra quais pontos merecem atenção primeiro."
+  >
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta name="author" content="Eduardo Souza">
+  <meta name="theme-color" content="#080a12">
+
+  <link
+    rel="canonical"
+    href="https://souzasdev.com/labs/diagnostico"
+  >
+
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Souzas Dev">
+  <meta
+    property="og:title"
+    content="Diagnóstico Digital | Souzas Dev Labs"
+  >
+  <meta
+    property="og:description"
+    content="Avalie a presença digital do seu negócio e receba prioridades práticas para evoluir."
+  >
+  <meta
+    property="og:url"
+    content="https://souzasdev.com/labs/diagnostico"
+  >
+  <meta
+    property="og:image"
+    content="https://souzasdev.com/assets/images/projects/souzas-dev.webp"
+  >
+  <meta
+    property="og:image:alt"
+    content="Souzas Dev — desenvolvimento web e soluções digitais"
+  >
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta
+    name="twitter:title"
+    content="Diagnóstico Digital | Souzas Dev Labs"
+  >
+  <meta
+    name="twitter:description"
+    content="Avalie a presença digital do seu negócio e receba prioridades práticas para evoluir."
+  >
+  <meta
+    name="twitter:image"
+    content="https://souzasdev.com/assets/images/projects/souzas-dev.webp"
+  >
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Souzas Diagnóstico Digital",
+      "url": "https://souzasdev.com/labs/diagnostico",
+      "description": "Ferramenta gratuita e orientativa para avaliar aspectos da presença digital de pequenos negócios e profissionais.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Qualquer navegador moderno",
+      "inLanguage": "pt-BR",
+      "isAccessibleForFree": true,
+      "provider": {
+        "@type": "Organization",
+        "name": "Souzas Dev",
+        "url": "https://souzasdev.com/"
+      }
+    }
+  </script>
+
+  <title>
+    Diagnóstico Digital | Souzas Dev Labs
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/css/style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/css/pages.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="./diagnostico.css"
+  >
+</head>
+
+<body class="internal-page labs-diagnostic-page">
+  <div
+    class="scroll-progress"
+    id="scroll-progress"
+    aria-hidden="true"
+  ></div>
+
+  <a
+    class="skip-link"
+    href="#conteudo-principal"
+  >
+    Ir para o conteúdo principal
+  </a>
+
+  <header
+    class="header"
+    id="header"
+  >
+    <div class="container header__content">
+      <div class="labs-brand">
+        <a
+          class="logo"
+          href="/"
+          aria-label="Souzas Dev — página inicial"
+        >
+          &lt;Dev<span>.</span>&gt;
+        </a>
+
+        <span class="labs-brand__label">
+          Labs
+        </span>
+      </div>
+
+      <button
+        class="menu-button"
+        id="menu-button"
+        type="button"
+        aria-label="Abrir menu"
+        aria-controls="navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav
+        class="navigation"
+        id="navigation"
+        aria-label="Navegação principal"
+      >
+        <a href="/">Início</a>
+        <a href="/sobre">Sobre</a>
+        <a href="/servicos">Serviços</a>
+        <a href="/cases">Projetos</a>
+        <a href="/conteudos">Conteúdos</a>
+
+        <a href="/labs">Labs</a>
+
+        <a
+          class="navigation__cta"
+          href="/#contato"
+        >
+          Vamos conversar
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main
+    id="conteudo-principal"
+    tabindex="-1"
+  >
+    <section
+      class="diagnostic-intro"
+      id="diagnostic-intro"
+      aria-labelledby="diagnostic-title"
+    >
+      <div class="container diagnostic-intro__content">
+        <div class="diagnostic-intro__copy">
+          <p class="page-eyebrow">
+            Souzas Dev Labs · Ferramenta gratuita
+          </p>
+
+          <h1 id="diagnostic-title">
+            Descubra como está a presença digital
+            do seu negócio.
+          </h1>
+
+          <p class="diagnostic-intro__description">
+            Responda perguntas simples sobre como seu negócio
+            se apresenta, gera confiança, facilita contatos e
+            organiza processos digitais.
+          </p>
+
+          <p class="diagnostic-intro__description">
+            Ao final, você recebe uma nota de 0 a 100,
+            uma avaliação por pilares e prioridades práticas
+            para identificar onde vale concentrar esforços.
+          </p>
+
+          <div class="diagnostic-intro__actions">
+            <button
+              class="button button--primary"
+              id="diagnostic-start"
+              type="button"
+            >
+              Começar diagnóstico
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <ul
+            class="diagnostic-intro__meta"
+            aria-label="Informações sobre o diagnóstico"
+          >
+            <li>Gratuito</li>
+            <li>Sem cadastro</li>
+            <li>20 perguntas</li>
+            <li>Resultado imediato</li>
+          </ul>
+
+          <p class="diagnostic-intro__notice">
+            O diagnóstico é orientativo e utiliza somente
+            as informações fornecidas durante o preenchimento.
+          </p>
+        </div>
+
+        <aside
+          class="diagnostic-overview"
+          aria-labelledby="diagnostic-overview-title"
+        >
+          <p class="diagnostic-overview__label">
+            O que será avaliado
+          </p>
+
+          <h2 id="diagnostic-overview-title">
+            Cinco pilares da presença digital
+          </h2>
+
+          <ol class="diagnostic-overview__list">
+            <li>
+              <span>01</span>
+              <strong>Presença Digital</strong>
+              <small>Até 20 pontos</small>
+            </li>
+
+            <li>
+              <span>02</span>
+              <strong>Posicionamento e Clareza</strong>
+              <small>Até 20 pontos</small>
+            </li>
+
+            <li>
+              <span>03</span>
+              <strong>Conversão</strong>
+              <small>Até 20 pontos</small>
+            </li>
+
+            <li>
+              <span>04</span>
+              <strong>Confiança e Autoridade</strong>
+              <small>Até 20 pontos</small>
+            </li>
+
+            <li>
+              <span>05</span>
+              <strong>Automação e Processos</strong>
+              <small>Até 20 pontos</small>
+            </li>
+          </ol>
+
+          <div class="diagnostic-overview__total">
+            <span>Nota máxima</span>
+            <strong>100 pontos</strong>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section
+      class="diagnostic-app"
+      id="diagnostic-app"
+      aria-labelledby="diagnostic-step-title"
+      hidden
+    >
+      <div class="container diagnostic-app__container">
+        <header class="diagnostic-progress">
+          <div class="diagnostic-progress__header">
+            <div>
+              <p
+                class="diagnostic-progress__eyebrow"
+                id="diagnostic-progress-label"
+              >
+                Preparando diagnóstico
+              </p>
+
+              <h2 id="diagnostic-step-title">
+                Sobre o seu negócio
+              </h2>
+            </div>
+
+            <p
+              class="diagnostic-progress__count"
+              id="diagnostic-progress-count"
+              aria-live="polite"
+            >
+              Início
+            </p>
+          </div>
+
+          <div
+            class="diagnostic-progress__track"
+            role="progressbar"
+            id="diagnostic-progress-bar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            aria-label="Progresso do diagnóstico"
+          >
+            <span
+              class="diagnostic-progress__value"
+              id="diagnostic-progress-value"
+            ></span>
+          </div>
+        </header>
+
+        <form
+          class="diagnostic-form"
+          id="diagnostic-form"
+          novalidate
+        >
+          <section
+            class="diagnostic-screen"
+            id="diagnostic-identification"
+            aria-labelledby="identification-title"
+          >
+            <div class="diagnostic-screen__heading">
+              <p class="page-eyebrow">
+                Antes de começar
+              </p>
+
+              <h3 id="identification-title">
+                Como devemos identificar o seu negócio?
+              </h3>
+
+              <p>
+                Pedimos apenas as informações necessárias
+                para personalizar a apresentação do resultado.
+              </p>
+            </div>
+
+            <div class="diagnostic-fields">
+              <div class="diagnostic-field">
+                <label for="business-name">
+                  Nome da empresa ou profissional
+                </label>
+
+                <input
+                  id="business-name"
+                  name="businessName"
+                  type="text"
+                  maxlength="100"
+                  autocomplete="organization"
+                  required
+                >
+
+                <p
+                  class="diagnostic-field__error"
+                  id="business-name-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+
+              <div class="diagnostic-field">
+                <label for="business-segment">
+                  Segmento
+                </label>
+
+                <input
+                  id="business-segment"
+                  name="businessSegment"
+                  type="text"
+                  maxlength="100"
+                  placeholder="Ex.: clínica, restaurante, arquitetura"
+                  required
+                >
+
+                <p
+                  class="diagnostic-field__error"
+                  id="business-segment-error"
+                  aria-live="polite"
+                ></p>
+              </div>
+
+              <div class="diagnostic-field">
+                <label for="business-location">
+                  Cidade ou região
+                  <span>opcional</span>
+                </label>
+
+                <input
+                  id="business-location"
+                  name="businessLocation"
+                  type="text"
+                  maxlength="100"
+                  autocomplete="address-level2"
+                  placeholder="Ex.: Campo Grande/MS"
+                >
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="diagnostic-screen"
+            id="diagnostic-question-screen"
+            aria-labelledby="question-title"
+            hidden
+          >
+            <div
+              class="diagnostic-question"
+              id="diagnostic-question"
+            >
+              <p
+                class="diagnostic-question__pillar"
+                id="question-pillar"
+              ></p>
+
+              <h3 id="question-title"></h3>
+
+              <p
+                class="diagnostic-question__help"
+                id="question-help"
+              ></p>
+
+              <fieldset
+                class="diagnostic-options"
+                id="question-options"
+              >
+                <legend class="sr-only">
+                  Escolha uma resposta
+                </legend>
+              </fieldset>
+            </div>
+          </section>
+
+          <div class="diagnostic-navigation">
+            <button
+              class="button button--secondary"
+              id="diagnostic-back"
+              type="button"
+              hidden
+            >
+              Voltar
+            </button>
+
+            <button
+              class="button button--primary"
+              id="diagnostic-next"
+              type="button"
+            >
+              Continuar
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section
+      class="diagnostic-result"
+      id="diagnostic-result"
+      aria-labelledby="result-title"
+      hidden
+    >
+      <div class="container">
+        <header class="diagnostic-result__header">
+          <p class="page-eyebrow">
+            Seu diagnóstico
+          </p>
+
+          <p
+            class="diagnostic-result__business"
+            id="result-business-name"
+          ></p>
+
+          <h2 id="result-title">
+            Resultado da presença digital
+          </h2>
+
+          <div class="diagnostic-score">
+            <strong id="result-score">0</strong>
+            <span>/100</span>
+          </div>
+
+          <p
+            class="diagnostic-score__classification"
+            id="result-classification"
+          ></p>
+
+          <p
+            class="diagnostic-result__summary"
+            id="result-summary"
+          ></p>
+        </header>
+
+        <section
+          class="diagnostic-result__section"
+          aria-labelledby="pillars-title"
+        >
+          <h3 id="pillars-title">
+            Avaliação por pilares
+          </h3>
+
+          <div
+            class="diagnostic-pillars"
+            id="result-pillars"
+          ></div>
+        </section>
+
+        <section
+          class="diagnostic-result__section"
+          aria-labelledby="positives-title"
+        >
+          <h3 id="positives-title">
+            Pontos positivos
+          </h3>
+
+          <div
+            class="diagnostic-result__cards"
+            id="result-positives"
+          ></div>
+        </section>
+
+        <section
+          class="diagnostic-result__section"
+          aria-labelledby="opportunities-title"
+        >
+          <h3 id="opportunities-title">
+            Principais oportunidades
+          </h3>
+
+          <div
+            class="diagnostic-result__cards"
+            id="result-opportunities"
+          ></div>
+        </section>
+
+        <section
+          class="diagnostic-result__section"
+          aria-labelledby="priorities-title"
+        >
+          <h3 id="priorities-title">
+            Prioridades sugeridas
+          </h3>
+
+          <ol
+            class="diagnostic-priorities"
+            id="result-priorities"
+          ></ol>
+        </section>
+
+        <section
+          class="diagnostic-result__section"
+          aria-labelledby="recommendations-title"
+        >
+          <h3 id="recommendations-title">
+            Recomendações práticas
+          </h3>
+
+          <div
+            class="diagnostic-result__cards"
+            id="result-recommendations"
+          ></div>
+        </section>
+
+        <section
+          class="diagnostic-contact"
+          aria-labelledby="diagnostic-contact-title"
+        >
+          <div>
+            <p class="page-eyebrow">
+              Próximo passo
+            </p>
+
+            <h3 id="diagnostic-contact-title">
+              Quer ajuda para colocar alguma dessas
+              melhorias em prática?
+            </h3>
+
+            <p>
+              A Souzas Dev desenvolve soluções web para
+              profissionais e pequenos negócios. Se fizer
+              sentido para você, podemos conversar sobre os
+              pontos identificados no diagnóstico.
+            </p>
+          </div>
+
+          <a
+            class="button button--primary"
+            id="diagnostic-contact-link"
+            href="https://wa.me/5567981193789"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Conversar com a Souzas Dev
+            <span aria-hidden="true">↗</span>
+          </a>
+        </section>
+
+        <div class="diagnostic-result__restart">
+          <button
+            class="button button--secondary"
+            id="diagnostic-restart"
+            type="button"
+          >
+            Refazer diagnóstico
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <noscript>
+      <section class="diagnostic-noscript">
+        <div class="container">
+          <h2>JavaScript necessário</h2>
+
+          <p>
+            O Diagnóstico Digital funciona diretamente no
+            navegador e precisa de JavaScript ativado para
+            calcular o resultado.
+          </p>
+        </div>
+      </section>
+    </noscript>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <a
+          class="footer__brand-link"
+          href="/"
+          aria-label="Souzas Dev — página inicial"
+        >
+          Souzas Dev
+        </a>
+
+        <p>
+          Desenvolvimento web e soluções digitais.
+        </p>
+
+        <div class="footer__owner">
+          <strong>Eduardo Souza</strong>
+          <span>Fundador e Desenvolvedor Web</span>
+        </div>
+      </div>
+
+      <nav
+        class="footer__navigation"
+        aria-label="Navegação do rodapé"
+      >
+        <p class="footer__heading">
+          Navegação
+        </p>
+
+        <a href="/">Início</a>
+        <a href="/sobre">Sobre</a>
+        <a href="/servicos">Serviços</a>
+        <a href="/cases">Projetos</a>
+        <a href="/conteudos">Conteúdos</a>
+        <a href="/labs">Labs</a>
+        <a href="/#contato">Contato</a>
+      </nav>
+
+      <div class="footer__contact">
+        <p class="footer__heading">
+          Contato
+        </p>
+
+        <p class="footer__location">
+          Campo Grande - MS
+        </p>
+
+        <div class="footer__contact-links">
+          <a href="mailto:eduardosouza@souzasdev.com">
+            eduardosouza@souzasdev.com
+          </a>
+
+          <a
+            href="https://wa.me/5567981193789"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+
+          <a
+            href="https://github.com/Souzas-Dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>
+        © <span id="current-year"></span>
+        Souzas Dev.
+      </p>
+
+      <p>
+        Souzas Dev Labs — ferramentas digitais úteis,
+        simples e gratuitas.
+      </p>
+
+      <a
+        class="footer__back"
+        href="#conteudo-principal"
+      >
+        Voltar ao topo
+      </a>
+    </div>
+  </footer>
+
+  <script
+    type="module"
+    src="/js/pages.js"
+  ></script>
+
+  <script
+    type="module"
+    src="./js/app.js"
+  ></script>
+</body>
+</html>

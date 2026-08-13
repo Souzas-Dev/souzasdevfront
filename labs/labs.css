@@ -1,0 +1,716 @@
+/* =========================================================
+   SOUZAS DEV LABS
+   Página central
+   ========================================================= */
+
+.labs-page {
+  --labs-surface:
+    rgba(17, 21, 34, 0.9);
+
+  --labs-surface-soft:
+    rgba(255, 255, 255, 0.025);
+
+  --labs-border:
+    rgba(255, 255, 255, 0.1);
+
+  --labs-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.22);
+}
+
+.labs-page main {
+  min-height: 100vh;
+}
+
+.labs-page .button--secondary {
+  color: var(--text-soft);
+}
+
+.labs-page .button--secondary:hover {
+  color: var(--text);
+}
+
+/* =========================================================
+   MARCA LABS
+   ========================================================= */
+
+.labs-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.labs-brand__label {
+  padding: 5px 9px;
+  border: 1px solid
+    rgba(139, 92, 246, 0.34);
+  border-radius: 999px;
+  background:
+    rgba(139, 92, 246, 0.08);
+  color: var(--primary-light);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.labs-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: 128px 78px;
+  background:
+    radial-gradient(
+      circle at 88% 18%,
+      rgba(139, 92, 246, 0.17),
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 5% 78%,
+      rgba(56, 189, 248, 0.08),
+      transparent 29%
+    );
+}
+
+.labs-hero::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    );
+  background-size: 54px 54px;
+  content: "";
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 95%
+    );
+  pointer-events: none;
+}
+
+.labs-hero__content {
+  position: relative;
+  display: grid;
+  gap: 48px;
+}
+
+.labs-hero__copy {
+  max-width: 760px;
+}
+
+.labs-hero h1 {
+  max-width: 850px;
+  font-size:
+    clamp(2.55rem, 11vw, 4.9rem);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+}
+
+.labs-hero__description {
+  max-width: 700px;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size:
+    clamp(1rem, 3.7vw, 1.12rem);
+  line-height: 1.8;
+}
+
+.labs-hero__description
++ .labs-hero__description {
+  margin-top: 12px;
+}
+
+.labs-hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.labs-hero__actions .button {
+  width: 100%;
+}
+
+.labs-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 28px;
+  list-style: none;
+}
+
+.labs-hero__meta li {
+  padding: 7px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background:
+    rgba(255, 255, 255, 0.025);
+  color: var(--text-soft);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+/* =========================================================
+   CONSOLE
+   ========================================================= */
+
+.labs-console {
+  overflow: hidden;
+  border: 1px solid var(--labs-border);
+  border-radius: var(--radius-md);
+  background:
+    rgba(13, 16, 26, 0.94);
+  box-shadow: var(--labs-shadow);
+}
+
+.labs-console__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 52px;
+  padding-inline: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.labs-console__header > p {
+  flex: 1;
+  color: var(--muted);
+  font-family:
+    Consolas,
+    "Courier New",
+    monospace;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.labs-console__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.labs-console__dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--danger);
+}
+
+.labs-console__dots span:nth-child(2) {
+  background: var(--warning);
+}
+
+.labs-console__dots span:nth-child(3) {
+  background: var(--success);
+}
+
+.labs-console__body {
+  display: grid;
+  gap: 25px;
+  padding: 25px;
+  font-family:
+    Consolas,
+    "Courier New",
+    monospace;
+}
+
+.labs-console__body > p {
+  color: var(--muted);
+  font-size: 0.77rem;
+}
+
+.labs-console__prompt {
+  margin-right: 8px;
+  color: var(--success);
+  font-weight: 900;
+}
+
+.labs-console__block {
+  display: grid;
+  gap: 5px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background:
+    rgba(255, 255, 255, 0.022);
+}
+
+.labs-console__block > span {
+  margin-bottom: 4px;
+  color: var(--primary-light);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.labs-console__block strong {
+  color: var(--text-soft);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.labs-console__block small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.labs-console__status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.labs-console__status > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow:
+    0 0 12px rgba(34, 197, 94, 0.5);
+}
+
+/* =========================================================
+   SEÇÕES
+   ========================================================= */
+
+.labs-section {
+  padding-block: 76px;
+}
+
+.labs-section__heading {
+  max-width: 760px;
+}
+
+.labs-section__heading h2 {
+  max-width: 720px;
+  font-size:
+    clamp(2rem, 8vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.labs-section__heading > p:last-child {
+  max-width: 700px;
+  margin-top: 18px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* =========================================================
+   PRINCÍPIOS
+   ========================================================= */
+
+.labs-about {
+  border-top: 1px solid var(--border);
+  background:
+    rgba(255, 255, 255, 0.008);
+}
+
+.labs-principles {
+  display: grid;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.labs-principle {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background:
+    var(--labs-surface-soft);
+}
+
+.labs-principle > span {
+  color: var(--primary-light);
+  font-family:
+    Consolas,
+    "Courier New",
+    monospace;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.labs-principle h3 {
+  margin-top: 17px;
+  color: var(--text-soft);
+  font-size: 1.08rem;
+}
+
+.labs-principle p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+/* =========================================================
+   PRODUTOS
+   ========================================================= */
+
+.labs-products {
+  position: relative;
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(139, 92, 246, 0.08),
+      transparent 28%
+    );
+}
+
+.labs-products__grid {
+  display: grid;
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.labs-product {
+  overflow: hidden;
+  border: 1px solid
+    rgba(139, 92, 246, 0.28);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(139, 92, 246, 0.095),
+      rgba(17, 21, 34, 0.94)
+    );
+  box-shadow: var(--labs-shadow);
+}
+
+.labs-product__content {
+  padding: 26px 22px;
+}
+
+.labs-product__category {
+  color: var(--secondary);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.labs-product__content h3 {
+  margin-top: 10px;
+  font-size:
+    clamp(1.65rem, 6vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.labs-product__content > p:not(
+  .labs-product__category
+) {
+  max-width: 680px;
+  margin-top: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.labs-product__features {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+  list-style: none;
+}
+
+.labs-product__features li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.labs-product__features li::before {
+  position: absolute;
+  top: 0.65em;
+  left: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.labs-product__footer {
+  display: grid;
+  gap: 18px;
+  padding: 20px 22px;
+  border-top: 1px solid var(--border);
+  background:
+    rgba(0, 0, 0, 0.08);
+}
+
+.labs-product__footer p {
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.labs-product__footer .button {
+  width: 100%;
+}
+
+/* =========================================================
+   CONEXÃO COM A SOUZAS DEV
+   ========================================================= */
+
+.labs-connection {
+  border-top: 1px solid var(--border);
+}
+
+.labs-connection__content {
+  display: grid;
+  gap: 28px;
+  padding-block: 12px;
+}
+
+.labs-connection h2 {
+  max-width: 700px;
+  font-size:
+    clamp(1.8rem, 7vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.labs-connection
+.labs-connection__content
+> div:first-child
+> p:last-child {
+  max-width: 680px;
+  margin-top: 16px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.labs-connection__action {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background:
+    rgba(255, 255, 255, 0.02);
+}
+
+.labs-connection__action p {
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+.labs-connection__action .button {
+  width: 100%;
+  margin-top: 18px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 700px) {
+  .labs-hero {
+    padding-block: 150px 94px;
+  }
+
+  .labs-hero__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .labs-hero__actions .button {
+    width: auto;
+  }
+
+  .labs-principles {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .labs-product__content,
+  .labs-product__footer {
+    padding-inline: 30px;
+  }
+
+  .labs-product__footer {
+    grid-template-columns:
+      minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .labs-product__footer .button {
+    width: auto;
+  }
+
+  .labs-connection__action .button {
+    width: fit-content;
+  }
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 960px) {
+  .labs-hero {
+    display: flex;
+    align-items: center;
+    min-height:
+      min(830px, 100vh);
+  }
+
+  .labs-hero__content {
+    grid-template-columns:
+      minmax(0, 1.12fr)
+      minmax(340px, 0.68fr);
+    align-items: center;
+    gap: 76px;
+  }
+
+  .labs-console {
+    transform: rotate(1deg);
+    transition:
+      transform 300ms ease,
+      border-color 300ms ease;
+  }
+
+  .labs-console:hover {
+    border-color:
+      rgba(139, 92, 246, 0.34);
+    transform:
+      rotate(0deg)
+      translateY(-4px);
+  }
+
+  .labs-products__grid {
+    grid-template-columns:
+      minmax(0, 1.45fr)
+      minmax(300px, 0.55fr);
+    align-items: stretch;
+  }
+
+  .labs-connection__content {
+    grid-template-columns:
+      minmax(0, 1.25fr)
+      minmax(300px, 0.55fr);
+    align-items: center;
+    gap: 70px;
+  }
+}
+
+/* =========================================================
+   TELAS PEQUENAS
+   ========================================================= */
+
+@media (max-width: 620px) {
+  .labs-brand {
+    gap: 8px;
+  }
+
+  .labs-brand__label {
+    padding: 4px 7px;
+    font-size: 0.6rem;
+  }
+
+  .labs-hero {
+    padding-top: 118px;
+  }
+
+  .labs-console__body {
+    padding: 21px;
+  }
+
+  .labs-section {
+    padding-block: 62px;
+  }
+
+  .labs-principle {
+    padding: 20px;
+  }
+
+}
+
+/* =========================================================
+   ACESSIBILIDADE / MOVIMENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .labs-console {
+    transition: none;
+  }
+}
+/* =========================================================
+   AJUSTES DE REFINAMENTO
+   ========================================================= */
+
+.labs-products__grid {
+  max-width: 820px;
+}
+
+.labs-product__content {
+  padding: 24px;
+}
+
+.labs-product__content h3 {
+  font-size:
+    clamp(1.5rem, 4vw, 2rem);
+}
+
+.labs-product__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 22px;
+  margin-top: 20px;
+}
+
+.labs-product__features li {
+  font-size: 0.8rem;
+}
+
+.labs-product__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px;
+}
+
+@media (min-width: 960px) {
+  .labs-products__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .labs-product__content {
+    padding: 21px;
+  }
+
+  .labs-product__content h3 {
+    font-size: 1.55rem;
+  }
+
+  .labs-product__footer {
+    padding: 16px 21px;
+  }
+
+  .labs-product__footer .button {
+    width: 100%;
+  }
+
+  .labs-connection__action {
+    padding: 20px;
+  }
+
+  .labs-connection__action .button {
+    white-space: nowrap;
+  }
+}
