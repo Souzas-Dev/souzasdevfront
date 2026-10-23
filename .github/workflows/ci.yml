@@ -30,7 +30,7 @@ jobs:
           test -s index.html
           test -s login.html
           test -s admin.html
-          test -s case-souzas-dev.html
+          test -s cases/souzas-dev.html
           test -s assets/icons/favicon.svg
 
       - name: Validate JavaScript syntax
